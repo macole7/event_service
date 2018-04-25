@@ -60,14 +60,14 @@ public class LoginController {
         return modelAndView;
     }
 
-    @PostMapping("/admin/home")
+    @PostMapping("/events")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByEmail = userService.findByEmail(authentication.getName());
         modelAndView.addObject("name", "Welcome " + userByEmail.getName() + " " + userByEmail.getEmail());
         modelAndView.addObject("adminMessage", "Content available only for users with admin role");
-        modelAndView.setViewName("admin/home");
+        modelAndView.setViewName("events");
         return modelAndView;
     }
 }
