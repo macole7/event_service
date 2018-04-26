@@ -17,8 +17,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<Event> findAll() {
-        List<Event> events = eventRepository.findAll();
-        return events;
+        return eventRepository.findAll();
+
     }
 
     @Override
@@ -31,7 +31,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> findByName(String name) {
         Optional<List<Event>> listOptional = Optional.ofNullable(eventRepository.findByName(name));
-        List<Event> events = listOptional.orElseThrow(() -> new RuntimeException("There is not such event"));
-        return events;
+        return listOptional.orElseThrow(() -> new RuntimeException("There is not such event"));
     }
 }

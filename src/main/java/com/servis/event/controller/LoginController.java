@@ -6,6 +6,7 @@ import com.servis.event.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,7 +66,7 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User userByEmail = userService.findByEmail(authentication.getName());
-        modelAndView.addObject("name", "Welcome " + userByEmail.getName() + " " + userByEmail.getEmail());
+        modelAndView.addObject("name", "Welcome " + userByEmail.getUsername() + " " + userByEmail.getEmail());
         modelAndView.addObject("adminMessage", "Content available only for users with admin role");
         modelAndView.setViewName("events");
         return modelAndView;

@@ -16,7 +16,7 @@ public class User {
     private Integer id;
 
     @NotEmpty(message = "*Please provide your email")
-    private String login;
+    private String username;
 
     @Length(min = 5, message = "*The password must have at least 5 characters")
     @NotEmpty(message = "*Please provide your password")
@@ -37,8 +37,8 @@ public class User {
     public User() {
     }
 
-    public User(String login, String password, String email, String name, Set<Role> roles) {
-        this.login = login;
+    public User(String username, String password, String email, String name, Set<Role> roles) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
@@ -47,10 +47,6 @@ public class User {
 
     public Integer getId() {
         return id;
-    }
-
-    public String getLogin() {
-        return login;
     }
 
     public String getPassword() {
@@ -65,12 +61,16 @@ public class User {
         return name;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
     public void setPassword(String password) {
